@@ -46,14 +46,6 @@ def update_item(item_id, test_result):
     print("Document updated successfully!")
 
 if __name__ == "__main__":
-    # load log_for_benchmark.json file
-    # docs = get()
-    # for d in docs:
-    #     if "gpt-35-turbo-instruct" in d["model"]:
-    #         delete_item(d["id"])
-
-
-    # move all rows in data/faq.csv to cosmosdb documents
     import pandas as pd
     df = pd.read_csv("data/faq.csv")
 
