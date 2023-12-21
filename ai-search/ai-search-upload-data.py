@@ -13,7 +13,7 @@ openai.api_version = "2022-12-01"
 print(os.environ['OPENAI_ENDPOINT'])
 
 
-service_name = 'aisearch-aash'
+service_name = os.environ['AI_SEARCH_SERVICE']
 index_name = 'faqdemo'
 api_version = '2020-06-30'
 endpoint = f'https://{service_name}.search.windows.net/indexes/{index_name}/docs/index?api-version={api_version}'

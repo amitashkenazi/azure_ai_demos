@@ -13,7 +13,7 @@ print(os.environ['OPENAI_ENDPOINT'])
 
 
 # send a query to the AI Search service
-service_name = 'aisearch-aash'
+service_name = os.environ['AI_SEARCH_SERVICE']
 index_name = 'faqdemo'
 api_version = '2023-11-01'
 api_key = os.environ['AI_SEARCH_KEY']

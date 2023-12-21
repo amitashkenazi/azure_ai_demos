@@ -1,8 +1,8 @@
 import requests
 import json
 import os
-
-url = "https://aisearch-aash.search.windows.net/indexes/faqdemo?api-version=2023-11-01"
+service_name = os.environ['AI_SEARCH_SERVICE']
+url = f"https://{service_name}.search.windows.net/indexes/faqdemo?api-version=2023-11-01"
 
 payload = json.dumps({
   "name": "faqdemo",
