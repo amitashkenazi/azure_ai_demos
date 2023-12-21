@@ -1,0 +1,2 @@
+question,answer
+Can I move/migrate my cluster between Azure tenants?,Moving your AKS cluster between tenants is currently unsupported.

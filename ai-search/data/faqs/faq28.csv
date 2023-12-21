@@ -1,0 +1,2 @@
+question,answer
+Can I restore my cluster after deleting it?,"No, you're unable to restore your cluster after deleting it. When you delete your cluster, the associated resource group and all its resources are deleted. If you want to keep any of your resources, move them to another resource group before deleting your cluster. If you have the Owner or User Access Administrator built-in role, you can lock Azure resources to protect them from accidental deletions and modifications. For more information, see Lock your resources to protect your infrastructure."

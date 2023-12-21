@@ -1,0 +1,2 @@
+question,answer
+"If I have a cluster with one or more nodes in an Unhealthy state or shut down, can I perform an upgrade?","No, delete/remove any nodes in a failed state or otherwise from the cluster before upgrading."

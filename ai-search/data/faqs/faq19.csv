@@ -1,0 +1,2 @@
+question,answer
+Can I have different VM sizes in a single cluster?,"Yes, you can use different virtual machine sizes in your AKS cluster by creating multiple node pools."

@@ -1,0 +1,2 @@
+question,answer
+Can I spread an AKS cluster across regions?,No. AKS clusters are regional resources and can't span regions. See best practices for business continuity and disaster recovery for guidance on how to create an architecture that includes multiple regions.

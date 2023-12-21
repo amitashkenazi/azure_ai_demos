@@ -1,0 +1,2 @@
+question,answer
+Can I move my AKS clusters from the current Azure subscription to another?,Moving your AKS cluster and its associated resources between Azure subscriptions isn't supported.

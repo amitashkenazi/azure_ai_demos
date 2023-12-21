@@ -1,0 +1,2 @@
+question,answer
+Can I limit who has access to the Kubernetes API server?,Yes. There are two options for limiting access to the API server:\n\nUse API Server Authorized IP Ranges if you want to maintain a public endpoint for the API server but restrict access to a set of trusted IP ranges.\nUse a private cluster if you want to limit the API server to only be accessible from within your virtual network.

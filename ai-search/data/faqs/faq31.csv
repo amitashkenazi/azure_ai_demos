@@ -1,0 +1,2 @@
+question,answer
+If I have pod / deployments in state 'NodeLost' or 'Unknown' can I still upgrade my cluster?,"You can, but we don't recommend it. You should perform updates when the state of the cluster is known and healthy."

@@ -1,0 +1,2 @@
+question,answer
+Windows Server nodes,"For Windows Server nodes, Windows Update doesn't automatically run and apply the latest updates. On a regular schedule around the Windows Update release cycle and your own validation process, you should perform an upgrade on the cluster and the Windows Server node pool(s) in your AKS cluster. This upgrade process creates nodes that run the latest Windows Server image and patches, then removes the older nodes. For more information on this process, see Upgrade a node pool in AKS."

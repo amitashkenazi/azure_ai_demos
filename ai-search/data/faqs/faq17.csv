@@ -1,0 +1,2 @@
+question,answer
+Can I spread an AKS cluster across availability zones?,Yes. You can deploy an AKS cluster across one or more availability zones in regions that support them.

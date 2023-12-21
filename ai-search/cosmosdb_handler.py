@@ -47,7 +47,7 @@ def update_item(item_id, test_result):
 
 if __name__ == "__main__":
     import pandas as pd
-    df = pd.read_csv("data/faq.csv")
+    df = pd.read_csv("data/faqs.csv")
 
     for i, row in df.iterrows():
         test_result = {

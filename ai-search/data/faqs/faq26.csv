@@ -1,0 +1,2 @@
+question,answer
+Can I move my AKS cluster or AKS infrastructure resources to other resource groups or rename them?,Moving or renaming your AKS cluster and its associated resources isn't supported.
