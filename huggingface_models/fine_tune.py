@@ -25,11 +25,15 @@ def fine_tune_model(model_path, jsonl_file_path, training_args):
     training_args = TrainingArguments(
         output_dir="./results",
         num_train_epochs=3,
-        per_device_train_batch_size=16,
+        per_device_train_batch_size=8,  # Reduced batch size
+        gradient_accumulation_steps=2,  # Gradient accumulation
         warmup_steps=500,
         weight_decay=0.01,
         logging_dir='./logs',
-        
+        evaluation_strategy="steps",
+        eval_steps=500,
+        fp16=True,  # Enable mixed precision training
+        dataloader_num_workers=2  # Limit number of CPU threads
     )
 
     # Initialize Trainer
