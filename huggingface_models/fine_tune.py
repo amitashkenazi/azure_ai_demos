@@ -32,7 +32,7 @@ def fine_tune_model(model_path, jsonl_file_path, training_args):
         logging_dir='./logs',
         evaluation_strategy="steps",
         eval_steps=500,
-        fp16=True,  # Enable mixed precision training
+        # fp16=True,  # Enable mixed precision training
         dataloader_num_workers=2  # Limit number of CPU threads
     )
 
