@@ -1,0 +1,1 @@
+python llama.cpp/convert.py mistralai-Mistral-7B-v0.1 --outfile Mistral-7B-v0.1.guff --outtype q8_0
