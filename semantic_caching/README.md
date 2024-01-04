@@ -1,0 +1,1 @@
+Install Redis Stack for the semantic_caching notebook
