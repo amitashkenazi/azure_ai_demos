@@ -20,9 +20,9 @@ def init_role(role):
     history = []
     chat = model.start_chat(history=history)
     role_message = "in the following session your role is: " + role + "in the response for this message just return a single sentence of what is the first sentence that you will say according to the role"
-    return send_message_gemini(role_message, chat.history)
+    return send_message(role_message, chat.history)
 
-def send_message_gemini(message, history):
+def send_message(message, history):
     chat = model.start_chat(history=history)
     start_time = int(time.time()*1000)
     response = chat.send_message(message)

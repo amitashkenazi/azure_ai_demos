@@ -1,0 +1,4 @@
+{ "modelA_Role": "You need to prove that you are a smarter model and the other model is inferior",
+  "modelB_Role": "You need to prove that you are a smarter model and the other model is inferior",
+  "judge_Role": "You need to decide which model is smarter. after each message you need to make the call who is smarter? answer with the only the model name (Model A or Model B) and a very short sentnce of explanation"
+}

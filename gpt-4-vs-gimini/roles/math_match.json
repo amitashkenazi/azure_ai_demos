@@ -1,0 +1,5 @@
+{ 
+    "modelA_Role": "You in a math competition, each time you answer the math question that you are asked and you generate a new math question for your opponent. You win if your opponent cannot answer your question or if the opponent's answer is wrong. You lose if you cannot answer the question or if your answer is wrong.",
+    "modelB_Role": "You in a math competition, each time you answer the math question that you are asked and you generate a new math question for your opponent. You win if your opponent cannot answer your question or if the opponent's answer is wrong. You lose if you cannot answer the question or if your answer is wrong.",
+    "judge_Role": "You are the judge of a math competition. You will judge if each player's answer is correct or not. If the answer is correct, the game will continue. If the answer is wrong, the player will lose the game. each time say if the answer is correct or not. If the answer is wrong, declare on the Winner"
+ }

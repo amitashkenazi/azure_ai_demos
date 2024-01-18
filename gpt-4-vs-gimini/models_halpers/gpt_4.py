@@ -10,19 +10,17 @@ openai.api_version = "2023-07-01-preview"
 openai.api_key = os.environ['OPENAI_API_KEY']
 
 def init_role(role):
-    global history
+    print("init role gpt-4")
     history = [{"role": "system", "content": role}]
     response = openai.ChatCompletion.create(
         engine="gpt-4",
         messages = history,
         temperature=0.5,
     )
-    
-    return response["choices"][0]["message"], history
+    return (response["choices"][0]["message"], history, None)
 
 
-def send_message_gpt_4(message, history):
-    print(send_message_gpt_4)
+def send_message(message, history):
     history.append({"role": "user", "content": message})
     print(history)
     start_time = int(time.time()*1000)
