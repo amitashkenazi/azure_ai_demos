@@ -1,0 +1,42 @@
+{
+    "name": "transfer_money",
+    "description": "Transfers a specified amount of money from the user's account to another account, including merchant details for the transfer.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fromAccountNumber": {
+          "type": "string",
+          "description": "The account number from which the money will be transferred."
+        },
+        "toAccountNumber": {
+          "type": "string",
+          "description": "The account number to which the money will be transferred."
+        },
+        "amount": {
+          "type": "number",
+          "description": "The amount of money to transfer."
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency in which the transfer should be made."
+        },
+        "merchant": {
+          "type": "string",
+          "optional": true,
+          "description": "The merchant associated with the transfer."
+        },
+        "transferDescription": {
+          "type": "string",
+          "optional": true,
+          "description": "A description or memo for the transfer."
+        }
+      },
+      "required": [
+        "fromAccountNumber",
+        "toAccountNumber",
+        "amount",
+        "currency"
+      ]
+    }
+  }
+    

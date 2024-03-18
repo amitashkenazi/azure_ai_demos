@@ -1,0 +1,16 @@
+{
+  "name": "get_user_bank_accounts",
+  "description": "Retrieves all bank account information associated with a given user ID. If not given, ask the user for their user ID.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string",
+        "description": "The unique identifier for the user whose bank account information is being requested."
+      }
+    },
+    "required": [
+      "userId"
+    ]
+  }
+}

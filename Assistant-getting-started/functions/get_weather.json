@@ -1,0 +1,16 @@
+{
+  "name": "get_weather_for_location",
+  "description": "Retrieves current weather information for a specified location. The location must be provided by the user in the form of either a city name or coordinates (latitude and longitude).",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The name of the city or the coordinates (latitude, longitude) for which the weather information is being requested."
+      }
+    },
+    "required": [
+      "location"
+    ]
+  }
+}

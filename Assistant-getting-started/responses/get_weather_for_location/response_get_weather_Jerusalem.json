@@ -1,0 +1,17 @@
+{
+    "location": "Jerusalem",
+    "weather": {
+      "description": "Partly cloudy",
+      "temperature": {
+        "current": 68,
+        "high": 70,
+        "low": 56
+      },
+      "humidity": 60,
+      "wind": {
+        "speed": 5,
+        "direction": "NW"
+      }
+    }
+  }
+  

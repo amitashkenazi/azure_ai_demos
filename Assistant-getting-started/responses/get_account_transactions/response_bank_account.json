@@ -1,0 +1,53 @@
+{
+    "status": "success",
+    "data": {
+      "transactions": [
+        {
+          "id": "txn12345",
+          "date": "2023-08-15",
+          "amount": -150.00,
+          "currency": "USD",
+          "description": "Coffee shop",
+          "merchant": "Bean There Done That",
+          "spendCategory": "Dining"
+        },
+        {
+          "id": "txn12346",
+          "date": "2023-08-16",
+          "amount": -200.00,
+          "currency": "USD",
+          "description": "Grocery shopping",
+          "merchant": "Fresh and Easy",
+          "spendCategory": "Groceries"
+        },
+        {
+          "id": "txn12347",
+          "date": "2023-08-17",
+          "amount": -75.00,
+          "currency": "USD",
+          "description": "Gas station",
+          "merchant": "Speedy Gas",
+          "spendCategory": "Fuel"
+        },
+        {
+          "id": "txn12348",
+          "date": "2023-08-18",
+          "amount": -45.00,
+          "currency": "USD",
+          "description": "Book store purchase",
+          "merchant": "Readers Corner",
+          "spendCategory": "Entertainment"
+        },
+        {
+          "id": "txn12349",
+          "date": "2023-08-19",
+          "amount": -120.00,
+          "currency": "USD",
+          "description": "Clothing store",
+          "merchant": "Fashion Forward",
+          "spendCategory": "Apparel"
+        }
+      ]
+    }
+  }
+  

@@ -1,0 +1,24 @@
+{
+    "status": "success",
+    "data": {
+      "accounts": [
+        {
+          "accountId": "acc12345",
+          "accountNumber": "123456789",
+          "accountType": "Checking",
+          "balance": 10245.75,
+          "currency": "USD",
+          "createdAt": "2020-04-12"
+        },
+        {
+          "accountId": "acc12346",
+          "accountNumber": "987654321",
+          "accountType": "Savings",
+          "balance": 15000.50,
+          "currency": "USD",
+          "createdAt": "2018-11-01"
+        }
+      ]
+    }
+  }
+  

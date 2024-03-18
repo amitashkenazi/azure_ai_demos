@@ -1,0 +1,22 @@
+{
+    "name": "call_assistant",
+    "description": "Allows the user to call a specific assistant type based on the need, such as a bank assistant, driver assistant, etc. The function requires the type of assistant and any necessary parameters specific to the assistant's function.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "assistantType": {
+          "type": "string",
+          "description": "The type of assistant being requested (e.g., 'bank', 'driver')."
+        },
+        "parameters": {
+          "type": "object",
+          "description": "The parameters required for the specific assistant's function, structured as key-value pairs. The structure of this object depends on the assistantType specified."
+        }
+      },
+      "required": [
+        "assistantType",
+        "parameters"
+      ]
+    }
+  }
+  

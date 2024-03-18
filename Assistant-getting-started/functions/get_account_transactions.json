@@ -1,0 +1,36 @@
+{
+    "name": "get_account_transactions",
+    "description": "Retrieves all the transactions made by a customer in their bank account over a specified period of time, including spend categories and merchant details.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "string",
+          "description": "The unique bank account number of the customer."
+        },
+        "startDate": {
+          "type": "string",
+          "description": "The start date for the transaction history period in YYYY-MM-DD format."
+        },
+        "endDate": {
+          "type": "string",
+          "description": "The end date for the transaction history period in YYYY-MM-DD format."
+        },
+        "spendCategory": {
+          "type": "string",
+          "optional": true,
+          "description": "Filters transactions by the spend category."
+        },
+        "merchant": {
+          "type": "string",
+          "optional": true,
+          "description": "Filters transactions by the merchant name."
+        }
+      },
+      "required": [
+        "accountNumber",
+        "startDate",
+        "endDate"
+      ]
+    }
+  }
