@@ -1,0 +1,8 @@
+{
+    "location": "New York",
+    "weather": {
+      "temp": 60,
+      "condition": "cloudy"
+    }
+  }
+  

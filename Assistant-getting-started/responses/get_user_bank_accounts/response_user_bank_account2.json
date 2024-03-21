@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "data": {
+      "accounts": [
+        {
+          "id": "1",
+          "accountName": "Savings",
+          "accountType": "Savings",
+          "balance": "1000.00"
+        },
+        {
+          "id": "2",
+          "accountName": "Checking",
+          "accountType": "Checking",
+          "balance": "2000.00"
+        },
+        {
+          "id": "3",
+          "accountName": "Credit Card",
+          "accountType": "Credit Card",
+          "balance": "-500.00"
+        }
+      ]
+    }
+  }
+  

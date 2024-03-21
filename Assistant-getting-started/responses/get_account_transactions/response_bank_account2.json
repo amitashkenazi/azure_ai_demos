@@ -1,0 +1,53 @@
+{
+    "status": "success",
+    "data": {
+      "transactions": [
+        {
+          "id": "txn12345",
+          "date": "2023-08-15",
+          "amount": -150.00,
+          "currency": "USD",
+          "description": "Coffee shop",
+          "merchant": "Bean There Done That",
+          "spendCategory": "Dining"
+        },
+        {
+          "id": "txn12346",
+          "date": "2023-08-15",
+          "amount": -50.00,
+          "currency": "USD",
+          "description": "Grocery store",
+          "merchant": "Fresh Market",
+          "spendCategory": "Groceries"
+        },
+        {
+          "id": "txn12347",
+          "date": "2023-08-15",
+          "amount": -100.00,
+          "currency": "USD",
+          "description": "Gas station",
+          "merchant": "Shell",
+          "spendCategory": "Gas"
+        },
+        {
+          "id": "txn12348",
+          "date": "2023-08-15",
+          "amount": -200.00,
+          "currency": "USD",
+          "description": "Clothing store",
+          "merchant": "Fashionista",
+          "spendCategory": "Clothing"
+        },
+        {
+          "id": "txn12349",
+          "date": "2023-08-15",
+          "amount": -25.00,
+          "currency": "USD",
+          "description": "Coffee shop",
+          "merchant": "Bean There Done That",
+          "spendCategory": "Dining"
+        }
+      ]
+    }
+  }
+  
