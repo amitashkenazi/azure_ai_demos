@@ -1,0 +1,35 @@
+{
+  "name": "get_product_analytics",
+  "description": "Retrieves comprehensive analytics data for a specified product based on its SKU (Stock Keeping Unit). The analytics data includes inventory status, competition alternatives, pricing information, and other relevant analytics to assist in product management and strategic decision-making. This function is designed to provide businesses with actionable insights for a specific product.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "productSKU": {
+        "type": "string",
+        "description": "The Stock Keeping Unit (SKU) identifier for the product. This is a unique identifier used to track the product for inventory purposes."
+      },
+      "analyticsParameters": {
+        "type": "object",
+        "properties": {
+          "inventoryStatus": {
+            "type": "boolean",
+            "description": "Indicates whether the inventory status should be included in the analytics data. When true, the current stock levels and restocking timelines are provided."
+          },
+          "competitionAnalysis": {
+            "type": "boolean",
+            "description": "Indicates whether competition analysis should be included in the analytics data. When true, provides information on alternative products, their features, and pricing."
+          },
+          "pricingStrategy": {
+            "type": "boolean",
+            "description": "Indicates whether pricing strategy insights should be included in the analytics data. When true, provides information on current pricing, historical pricing data, and competitive pricing strategies."
+          }
+        },
+        "description": "Specifies which analytics parameters to include in the report. This allows for customizable analytics based on the user's needs."
+      }
+    },
+    "required": [
+      "productSKU",
+      "analyticsParameters"
+    ]
+  }
+}

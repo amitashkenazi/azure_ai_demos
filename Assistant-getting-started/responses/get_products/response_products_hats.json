@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Baseball Cap",
+      "category": "hats",
+      "price": 25.00,
+      "brand": "CapItOff",
+      "description": "Adjustable baseball cap with a curved visor, available in various colors."
+    },
+    {
+      "id": 2,
+      "name": "Beanie",
+      "category": "hats",
+      "price": 15.99,
+      "brand": "WarmHeads",
+      "description": "Knitted beanie, perfect for cold weather, offering warmth and style."
+    },
+    {
+      "id": 3,
+      "name": "Panama Hat",
+      "category": "hats",
+      "price": 40.00,
+      "brand": "TropicalWear",
+      "description": "Elegant Panama hat made from straw, ideal for sunny weather and beach outings."
+    }
+  ],
+  "message": "Products successfully retrieved."
+}

@@ -1,0 +1,49 @@
+{
+    "success": true,
+    "data": {
+      "productSKU": "POL-IPCAM-2024-RED",
+      "analytics": {
+        "inventoryStatus": {
+          "currentStock": 150,
+          "restockingDate": "2024-04-15",
+          "status": "In stock"
+        },
+        "competitionAnalysis": [
+          {
+            "productSKU": "INSTX-MINI11-BLU",
+            "brand": "Fujifilm",
+            "model": "Instax Mini 11",
+            "price": 69.99,
+            "features": "Instant photo printing, small size, blue color"
+          },
+          {
+            "productSKU": "KOD-PRINTOMATIC-GRN",
+            "brand": "Kodak",
+            "model": "Printomatic",
+            "price": 49.99,
+            "features": "Digital printing, compact design, green color"
+          }
+        ],
+        "pricingStrategy": {
+          "currentPrice": 119.99,
+          "historicalPricing": {
+            "2023-12": 129.99,
+            "2024-01": 114.99,
+            "2024-02": 119.99
+          },
+          "competitivePricing": [
+            {
+              "productSKU": "INSTX-MINI11-BLU",
+              "price": 69.99
+            },
+            {
+              "productSKU": "KOD-PRINTOMATIC-GRN",
+              "price": 49.99
+            }
+          ]
+        }
+      }
+    },
+    "message": "Analytics data retrieved successfully."
+  }
+  

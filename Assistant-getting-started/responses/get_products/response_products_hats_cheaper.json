@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Cotton Baseball Cap",
+      "category": "hats",
+      "price": 12.99,
+      "brand": "EverydayCaps",
+      "description": "Comfortable cotton baseball cap with an adjustable strap, suitable for everyday wear."
+    },
+    {
+      "id": 2,
+      "name": "Winter Beanie",
+      "category": "hats",
+      "price": 9.99,
+      "brand": "CozyHeads",
+      "description": "Soft, knitted beanie designed to keep you warm during the winter months."
+    },
+    {
+      "id": 3,
+      "name": "Sun Hat",
+      "category": "hats",
+      "price": 18.00,
+      "brand": "SunGuard",
+      "description": "Wide-brimmed sun hat offering excellent UV protection, ideal for sunny days."
+    }
+  ],
+  "message": "Products successfully retrieved with more affordable options."
+}

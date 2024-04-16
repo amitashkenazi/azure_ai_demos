@@ -1,0 +1,15 @@
+{
+    "success": true,
+    "data": {
+      "productName": "Instant Print Camera",
+      "SKU": "POL-IPCAM-2024-RED",
+      "details": {
+        "category": "Photography",
+        "brand": "Polaroid",
+        "model": "Polaroid Now",
+        "variant": "Red"
+      }
+    },
+    "message": "SKU retrieved successfully."
+  }
+  

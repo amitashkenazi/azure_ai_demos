@@ -1,0 +1,23 @@
+{
+  "name": "get_user_action",
+  "description": "This function prompts the user with a set of actions represented as buttons. Each button is labeled with an action name. The function waits for the user to click one of these buttons and returns the name of the action that was pressed by the user.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "A dictionary where each key is an action name to be presented on a button, and the value is a description of what the action will perform. This dictionary represents the available actions the user can take. example: {\"action1\": \"This action will do something.\", \"action2\": \"This action will do something else.\"}"
+      }
+    },
+    "required": [
+      "actions"
+    ]
+  },
+  "returns": {
+    "description": "The name of the action pressed by the user. This corresponds to one of the keys in the input dictionary.",
+    "type": "string"
+  }
+}

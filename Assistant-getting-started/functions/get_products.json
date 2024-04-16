@@ -1,0 +1,42 @@
+{
+    "name": "get_products",
+    "description": "This function retrieves products from a retail database based on specified filters and parameters. It allows users to refine their search for products by attributes such as category, price range, brand, and other relevant criteria. The response will include a list of products that match the filters, each with details like name, price, brand, and a brief description. This can help users find exactly what they're looking for in a retail context.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "The category of products to filter by"
+        },
+        "priceRange": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "The minimum price of the product range"
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum price of the product range"
+            }
+          },
+          "required": ["min", "max"]
+        },
+        "brand": {
+          "type": "string",
+          "description": "The brand of the products to filter by"
+        },
+        "otherFilters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Other filters specified as key-value pairs, allowing for extended filtering capabilities beyond the basic filters."
+        }
+      },
+      "required": [
+        "category"
+      ]
+    }
+  }
+  

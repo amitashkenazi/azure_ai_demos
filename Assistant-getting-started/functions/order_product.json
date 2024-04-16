@@ -1,0 +1,67 @@
+{
+    "name": "order_product",
+    "description": "This function initiates the process of ordering a product using its SKU (Stock Keeping Unit). It is designed to facilitate the purchase of a specific item from the retail inventory by identifying it through its unique SKU. The function takes the SKU as input and processes the order, which involves verifying the product's availability, calculating the total cost including any applicable taxes and shipping fees, and initiating the payment process. Upon successful execution, the function will confirm the order placement and provide the user with an order ID for tracking purposes.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The unique identifier for the product to be ordered"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "The number of units of the product to order"
+        },
+        "shippingAddress": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string",
+              "description": "The street address for shipping"
+            },
+            "city": {
+              "type": "string",
+              "description": "The city of the shipping address"
+            },
+            "state": {
+              "type": "string",
+              "description": "The state of the shipping address"
+            },
+            "zipCode": {
+              "type": "string",
+              "description": "The postal code of the shipping address"
+            },
+            "country": {
+              "type": "string",
+              "description": "The country of the shipping address"
+            }
+          },
+          "required": ["street", "city", "state", "zipCode", "country"]
+        },
+        "paymentDetails": {
+          "type": "object",
+          "properties": {
+            "paymentMethod": {
+              "type": "string",
+              "description": "The method of payment (e.g., credit card, PayPal)"
+            },
+            "cardNumber": {
+              "type": "string",
+              "description": "The payment card number, if applicable"
+            },
+            "expiryDate": {
+              "type": "string",
+              "description": "The card's expiry date, if applicable"
+            },
+            "cvv": {
+              "type": "string",
+              "description": "The card's security CVV code, if applicable"
+            }
+          },
+          "required": ["paymentMethod"]
+        }
+      },
+      "required": ["sku", "quantity", "shippingAddress", "paymentDetails"]
+    }
+  }
+  

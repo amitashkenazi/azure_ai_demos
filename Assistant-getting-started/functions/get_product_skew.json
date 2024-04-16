@@ -1,0 +1,41 @@
+{
+  "name": "get_product_SKU",
+  "description": "Retrieves the Stock Keeping Unit (SKU) for a specified product based on its name and other identifying features. This function is essential for inventory management, product identification, and for utilizing other functions that require an SKU. It simplifies the process of obtaining a product's SKU from potentially complex product catalogs or databases.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "productName": {
+        "type": "string",
+        "description": "The name of the product for which the SKU is being requested."
+      },
+      "identifyingFeatures": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "The category to which the product belongs, aiding in narrowing down the search."
+          },
+          "brand": {
+            "type": "string",
+            "description": "The brand name of the product, providing further specification."
+          },
+          "model": {
+            "type": "string",
+            "optional": true,
+            "description": "The model number or identifier of the product. This field is optional but can greatly increase the accuracy of the SKU retrieval."
+          },
+          "variant": {
+            "type": "string",
+            "optional": true,
+            "description": "Any specific variant details such as color, size, or configuration that can help in precisely identifying the SKU."
+          }
+        },
+        "description": "A set of key-value pairs that describe identifying features of the product to accurately retrieve its SKU."
+      }
+    },
+    "required": [
+      "productName",
+      "identifyingFeatures"
+    ]
+  }
+}

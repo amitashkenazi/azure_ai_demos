@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "data": [
+      {
+        "id": 1,
+        "name": "Running Shoes",
+        "category": "shoes",
+        "price": 59.99,
+        "brand": "FastTrack",
+        "description": "Lightweight running shoes with breathable mesh upper and cushioned sole."
+      },
+      {
+        "id": 2,
+        "name": "Leather Boots",
+        "category": "shoes",
+        "price": 120.00,
+        "brand": "RuggedStep",
+        "description": "Durable leather boots designed for rugged outdoor activities, featuring waterproof construction."
+      },
+      {
+        "id": 3,
+        "name": "Sneakers",
+        "category": "shoes",
+        "price": 75.00,
+        "brand": "UrbanTrend",
+        "description": "Stylish and comfortable sneakers, perfect for casual wear with a modern design."
+      }
+    ],
+    "message": "Products successfully retrieved."
+  }
+  
