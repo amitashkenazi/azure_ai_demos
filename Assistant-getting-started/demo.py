@@ -127,15 +127,7 @@ def refresh_to_thread(client, thread_id):
         msg(message.content[0].text.value, message.role == "user", key=str(uuid.uuid4()))
     st.sidebar.text(f"Thread Status: {st.session_state['thread_status'][thread_id]}")
 
-def chat():
-    print("chat")
-    # input text for the user to put the assistant role
-    st.sidebar.header('Assisstant Demo')
-    
-        
-    
-    
-    # st.text_area(f"Hello", key='modelA_role', value="Hello")
+def initiate_session_state():
     if 'assistant' not in st.session_state:
         st.session_state['assistant'] = None
     if 'messages' not in st.session_state:
@@ -152,11 +144,11 @@ def chat():
         st.session_state["threads_buttons"] = {}
     if "waiting_for_response" not in st.session_state:
         st.session_state["waiting_for_response"] = False
-    if 'session' not in st.session_state:
-        st.session_state['session'] = {"session": str(uuid.uuid4())}  
-        # create a session json file in sessions/<>.json
-        with open(f"sessions/{st.session_state['session']['session']}.json", "w") as f:
-            f.write(json.dumps(st.session_state["session"]))
+    # if 'session' not in st.session_state:
+        # st.session_state['session'] = {"session": str(uuid.uuid4())}  
+        # # create a session json file in sessions/<>.json
+        # with open(f"sessions/{st.session_state['session']['session']}.json", "w") as f:
+        #     f.write(json.dumps(st.session_state["session"]))
     if "thread_id" not in st.session_state:
         st.session_state["thread_id"] = None
 
@@ -167,63 +159,105 @@ def chat():
 
     st.session_state["waiting_for_action"] = False
 
-    functions = get_functions()
-    assistants = get_assistants()
-    print(assistants)
-    selected_functions_dict = {}
+def select_assistant_sidebar(assistants, functions):  
+    selected_functions_dict = {}  
+    st.sidebar.header("Create an assistant")
+    selected_assistant = st.sidebar.selectbox("Select assistant", list(assistants.keys()))
+    if selected_assistant:
+        st.sidebar.text_area(f"Assistant: {selected_assistant}", value=assistants[selected_assistant])
     
-    # create a streamlit combo box to select the assistant. single selection
-    st.header("Create an assistant")
-    selected_assistant = st.selectbox("Select assistant", list(assistants.keys()))
-    selected_functions = st.multiselect("Select functions", list(functions.keys()))
+    function_chosen = st.sidebar.selectbox("Functions", functions.keys())
+    if function_chosen:
+        formated_json = json.dumps(functions[function_chosen], indent=4)
+        st.sidebar.text_area(f"Function: {function_chosen}", value=formated_json)
+
+    
+    selected_functions = st.sidebar.multiselect("Select functions", list(functions.keys()))
     if selected_functions:
         st.session_state["selected_functions"] = selected_functions
     
         # create a new dict with only the selected functions
         for function in selected_functions:
             selected_functions_dict[function] = functions[function]
-
+    
     if selected_assistant:
-        st.text_area(f"Assistant: {selected_assistant}", value=assistants[selected_assistant])
-        create_assistant_btn = st.button("Create assistant")
+        create_assistant_btn = st.sidebar.button("Create assistant")
         if create_assistant_btn:
             st.session_state["assistant"] = create_assistant(assistants[selected_assistant], "gpt-4", selected_assistant, selected_functions_dict)
-            # st.success(f"Assistant {selected_assistant} created functions: {st.session_state['selected_functions']}")
+
+def create_thread():
+    print("create thread")
+    st.session_state["thread"] = client.beta.threads.create()
+    st.session_state["thread_status"][st.session_state["thread"].id] = "created"
+    # if "threads" not in st.session_state["session"]:
+    #     st.session_state["session"]["threads"] = []
+    # st.session_state["session"]["threads"].append(st.session_state["thread"].id)
+    st.session_state["threads"].append(st.session_state["thread"].id)
+    # with open(f"sessions/{st.session_state['session']['session']}.json", "w") as f:
+    #     f.write(json.dumps(st.session_state["session"]))
+    # refresh_to_thread(client, st.session_state["thread"].id)
+    st.session_state["selected_thread"] = st.session_state["thread"].id
+
+def special_functions_response_handle(tool_call):
+    function_name  = tool_call['function']['name']
+    if function_name == "get_user_action":
+        st.text(f"function name: {function_name}")
+        st.text(f"function args: {tool_call['function']['arguments']}")        
+        pass
+    
+
+def submit_user_input(user_input):
+    st.success(f"You said: {user_input}")
+    message = client.beta.threads.messages.create(
+        thread_id=st.session_state["thread"].id,
+        role="user",
+        content=user_input
+    )
+    run = client.beta.threads.runs.create(
+        thread_id=st.session_state["thread"].id,
+        assistant_id=st.session_state["assistant"].id,
+        #instructions="New instructions" #You can optionally provide new instructions  but these will override the default instructions
+    )
+    return run
+
+def show_buttons(buttons):
+    cols = st.columns(len(buttons))
+    button_pressed = None
+
+    # Iterate through each button and its corresponding column to create buttons dynamically
+    for i, button_label in enumerate(buttons):
+        # Use the column `with` context manager to place buttons in the respective column
+        with cols[i]:
+            # Create a button using the label from the array
+            if st.button(button_label.capitalize(), key=f"button_{i}"):
+                button_pressed = button_label.capitalize()
+    if button_pressed is not None:
+        st.write(f"You pressed the {button_pressed} button.")
+    return button_pressed
+        
+def chat():
+    st.header('Assisstant Demo')
+    initiate_session_state()
+    functions = get_functions()
+    assistants = get_assistants()
+    select_assistant_sidebar(assistants, functions)
+    # create a streamlit combo box to select the assistant. single selection
     
     if st.session_state['assistant']:
-        st.sidebar.text(f"Assistant: {st.session_state['assistant'].id}")
-        st.sidebar.text(f"Assistant: {st.session_state['assistant']}")
         st.header("Threads")
-        create_thread = st.button("Create thread")
-        if create_thread:
-            print("create thread")
-            st.session_state["thread"] = client.beta.threads.create()
-            st.session_state["thread_status"][st.session_state["thread"].id] = "created"
-            if "threads" not in st.session_state["session"]:
-                st.session_state["session"]["threads"] = []
-            st.session_state["session"]["threads"].append(st.session_state["thread"].id)
-            st.session_state["threads"].append(st.session_state["thread"].id)
-            with open(f"sessions/{st.session_state['session']['session']}.json", "w") as f:
-                f.write(json.dumps(st.session_state["session"]))
-            # refresh_to_thread(client, st.session_state["thread"].id)
-            st.session_state["selected_thread"] = st.session_state["thread"].id
-            
-            
-            
+        create_thread_btn = st.button("Create thread")
+        if create_thread_btn:
+            create_thread()
         if len(st.session_state["threads"]) > 0:
             selected_thread = st.sidebar.selectbox("Select thread", list(st.session_state["threads"]), index=len(st.session_state["threads"]) - 1)
             if selected_thread:
-                print("---------------------------")
                 st.session_state["selected_thread"] = selected_thread
                 st.session_state["thread_id"] = selected_thread
                 st.session_state["thread"] = get_thread(client, selected_thread)
-                # refresh_to_thread(client, selected_thread)
-                
-                
-                    
-            
+    else:
+        st.warning("Please create an assistant")           
+
     if st.session_state['assistant'] is not None:
-        
         if not st.session_state["waiting_for_response"]:
             submit = False
             if st.session_state["thread"] is not None:
@@ -231,63 +265,23 @@ def chat():
                 submit = st.button("Submit")
             if submit:
                 st.success(f"You said: {user_input}")
-                # st.session_state.messages.append(
-                #     {
-                #         "message": user_input,
-                #         "is_user": True,
-                #     }
-                # ) 
-                # # Add a new user question to the thread
-                message = client.beta.threads.messages.create(
-                    thread_id=st.session_state["thread"].id,
-                    role="user",
-                    content=user_input
-                )
-                run = client.beta.threads.runs.create(
-                    thread_id=st.session_state["thread"].id,
-                    assistant_id=st.session_state["assistant"].id,
-                    #instructions="New instructions" #You can optionally provide new instructions  but these will override the default instructions
-                    )
-
+                run = submit_user_input(user_input)
+                st.session_state["run"] = run
                 messages, status, run = wait_for_response(st.session_state["thread"], run)
-
                 if status == "requires_action":
-                    # st.success("Requires action")
-                    # print("Requires action")
                     st.session_state["tool_calls"] = json.loads(run.required_action.model_dump_json(indent=2))['submit_tool_outputs']['tool_calls']
                     st.session_state["waiting_for_response"] = True
-                    st.session_state["run"] = run
                     st.session_state["thread_status"][st.session_state["thread"].id] = status
+                    st.write("Tool calls:")
+                    st.write(st.session_state["tool_calls"])
                         
-            
         if st.session_state["waiting_for_response"]:
             st.success("Waiting for a response")
             for tool_call in st.session_state["tool_calls"]:
-                st.text("waiting for a response for the following function:")
-                st.text(f"function name: {tool_call['function']['name']}")
-                st.text(f"function name: {tool_call['function']['arguments']}")        
-                st.text(f"tool call: {tool_call}")   
-                print(f"tool call: {tool_call}")     
-                
-                st.session_state["waiting_for_response"] = True
-                    
-                response_combo = st.selectbox("Select response", get_responses(tool_call['function']['name']), key="response")
-                
-                
-                response = ""
-                try:
-                    file_name = response_combo
-                    with open(file_name) as f:
-                        response = f.read()
-                        st.text_area("Response", value=response)
-                except:
-                    print(f"File {response_combo} not found")
-                    response = st.text_area("Response")
-                submit_response = st.button("Submit response")
-                
-                if submit_response:
-                    # st.success(f"Response: {response}")
-                    # read the response and present it in text_area
+                if not special_functions_response_handle(tool_call):
+                    st.session_state["waiting_for_response"] = True
+                    response_combo = st.selectbox("Select response", get_responses(tool_call['function']['name']), key="response")
+                    response = ""
                     try:
                         file_name = response_combo
                         with open(file_name) as f:
@@ -295,28 +289,39 @@ def chat():
                             st.text_area("Response", value=response)
                     except:
                         print(f"File {response_combo} not found")
-                    if response:
-                        st.success(f"Response: {response}")
-                        st.session_state["waiting_for_response"] = False
-                        run = st.session_state["run"]
-                        run = client.beta.threads.runs.submit_tool_outputs(
-                            thread_id=st.session_state["thread"].id,
-                            run_id=run.id,
-                            tool_outputs=[
-                                {
-                                    "tool_call_id": tool_call["id"],
-                                    "output": response,
-                                }
-                                ]
-                            )
-                        messages, status, run = wait_for_response(st.session_state["thread"], run)
-                        print(f"Status: {status}")
-                        print(f'messages: {messages}')
-                        st.session_state["waiting_for_response"] = False
-                        st.button("Refresh")
-                        
-                
-                    st.session_state["tool_calls"] = None
+                        response = st.text_area("Response")
+                    submit_response = st.button("Submit response")
+                    
+                    if submit_response:
+                        try:
+                            file_name = response_combo
+                            with open(file_name) as f:
+                                response = f.read()
+                                st.text_area("Response", value=response)
+                        except:
+                            print(f"File {response_combo} not found")
+                        if response:
+                            st.success(f"Response: {response}")
+                            st.session_state["waiting_for_response"] = False
+                            run = st.session_state["run"]
+                            run = client.beta.threads.runs.submit_tool_outputs(
+                                thread_id=st.session_state["thread"].id,
+                                run_id=run.id,
+                                tool_outputs=[
+                                    {
+                                        "tool_call_id": tool_call["id"],
+                                        "output": response,
+                                    }
+                                    ]
+                                )
+                            messages, status, run = wait_for_response(st.session_state["thread"], run)
+                            print(f"Status: {status}")
+                            print(f'messages: {messages}')
+                            st.session_state["waiting_for_response"] = False
+                            st.button("Refresh")
+                            
+                    
+                        st.session_state["tool_calls"] = None
             
         # else:
         #     st.success("Not waiting for a response")
