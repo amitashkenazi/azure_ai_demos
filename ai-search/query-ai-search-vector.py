@@ -1,19 +1,21 @@
 import requests
-from openai.embeddings_utils import get_embedding, cosine_similarity
-import openai
+from openai import AzureOpenAI
 import os
 import json
 from pprint import pprint
+from dotenv import load_dotenv
+load_dotenv()
+def get_embedding(text, model="text-embedding-ada-002"):
+    response = client.embeddings.create(input=text,
+    model=model)
+    return response.data[0].embedding
 
-openai.api_type = "azure"
-openai.api_key = os.environ['OPENAI_API_KEY']
-openai.api_base = os.environ['OPENAI_ENDPOINT']
-openai.api_version = "2022-12-01"
-print(os.environ['OPENAI_ENDPOINT'])
+client = AzureOpenAI(api_key=os.environ['OPENAI_API_KEY'],
+azure_endpoint=os.environ['OPENAI_ENDPOINT'],
+api_version="2022-12-01")
 
-
-# send a query to the AI Search service
-service_name = 'aisearch-aash'
+# Send a query to the AI Search service
+service_name = os.environ['AI_SEARCH_SERVICE']
 index_name = 'faqdemo'
 api_version = '2023-11-01'
 api_key = os.environ['AI_SEARCH_KEY']
@@ -22,19 +24,20 @@ endpoint = f'https://{service_name}.search.windows.net/indexes/{index_name}/docs
 
 question = "Can I skip the 30 days and just start with pay-as-you-go pricing?"
 
+
 payload = json.dumps({
   "count": True,
   "select": "id, question, answer, Tags",
   "vectorQueries": [
     {
-      "vector": get_embedding(question, engine="text-embedding-ada-002"),
+      "vector": get_embedding(question, model="text-embedding-ada-002"),
       "k": 7,
       "fields": "AnswerVector",
       "kind": "vector",
       "exhaustive": True
     },
     {
-      "vector": get_embedding(question, engine="text-embedding-ada-002"),
+      "vector": get_embedding(question, model="text-embedding-ada-002"),
       "k": 7,
       "fields": "QuestionVector",
       "kind": "vector",
