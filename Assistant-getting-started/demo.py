@@ -75,7 +75,7 @@ def create_assistant(instruction: str, model: str, name: str, functions: dict):
         tools=[{"type": "code_interpreter"}] + functions_dict_to_api,
         model=model #You must replace this value with the deployment name for your model.
     )
-    st.success(f"Assistant {name} created")
+    st.success(f"Assistant {name} with model {model} was created")
     return assistant
 
 def get_roles():
@@ -129,6 +129,7 @@ def refresh_to_thread(client, thread_id):
 
 def initiate_session_state():
     if 'assistant' not in st.session_state:
+        print('assistant not in session state')
         st.session_state['assistant'] = None
     if 'messages' not in st.session_state:
         st.session_state['messages'] = []
@@ -207,7 +208,7 @@ def special_functions_response_handle(tool_call):
     
 
 def submit_user_input(user_input):
-    st.success(f"You said: {user_input}")
+    # st.success(f"You said: {user_input}")
     message = client.beta.threads.messages.create(
         thread_id=st.session_state["thread"].id,
         role="user",
@@ -264,7 +265,7 @@ def chat():
                 user_input=st.text_input("You:",key='input')
                 submit = st.button("Submit")
             if submit:
-                st.success(f"You said: {user_input}")
+                # st.success(f"You said: {user_input}")
                 run = submit_user_input(user_input)
                 st.session_state["run"] = run
                 messages, status, run = wait_for_response(st.session_state["thread"], run)
