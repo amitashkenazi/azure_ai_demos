@@ -1,11 +1,15 @@
 import requests
 import json
 import os
+from dotenv import load_dotenv
+load_dotenv()
 service_name = os.environ['AI_SEARCH_SERVICE']
-url = f"https://{service_name}.search.windows.net/indexes/faqdemo?api-version=2023-11-01"
 
+
+name = os.environ['AI_SEARCH_INDEX_NAME']
+url = f"https://{service_name}.search.windows.net/indexes/{name}?api-version=2023-11-01"
 payload = json.dumps({
-  "name": "faqdemo",
+  "name": name,
   "fields": [
     {
       "name": "id",
@@ -20,28 +24,6 @@ payload = json.dumps({
       "searchAnalyzer": None,
       "analyzer": None,
       "fields": []
-    },
-    {
-      "name": "question",
-      "type": "Edm.String",
-      "searchable": True,
-      "filterable": True,
-      "retrievable": True,
-      "sortable": True,
-      "facetable": False,
-      "key": False,
-      "indexAnalyzer": None,
-      "searchAnalyzer": None,
-      "analyzer": None,
-      "fields": []
-    },
-    {
-      "name": "QuestionVector",
-      "type": "Collection(Edm.Single)",
-      "searchable": True,
-      "retrievable": True,
-      "dimensions": 1536,
-      "vectorSearchProfile": "my-vector-profile"
     },
     {
       "name": "answer",
@@ -64,6 +46,48 @@ payload = json.dumps({
       "retrievable": True,
       "dimensions": 1536,
       "vectorSearchProfile": "my-vector-profile"
+    },
+    {
+      "name": "filename",
+      "type": "Edm.String",
+      "searchable": True,
+      "filterable": True,
+      "retrievable": True,
+      "sortable": True,
+      "facetable": False,
+      "key": False,
+      "indexAnalyzer": None,
+      "searchAnalyzer": None,
+      "analyzer": None,
+      "fields": []
+    },
+    {
+      "name": "title",
+      "type": "Edm.String",
+      "searchable": True,
+      "filterable": True,
+      "retrievable": True,
+      "sortable": True,
+      "facetable": False,
+      "key": False,
+      "indexAnalyzer": None,
+      "searchAnalyzer": None,
+      "analyzer": None,
+      "fields": []
+    },
+    {
+      "name": "url",
+      "type": "Edm.String",
+      "searchable": True,
+      "filterable": True,
+      "retrievable": True,
+      "sortable": True,
+      "facetable": False,
+      "key": False,
+      "indexAnalyzer": None,
+      "searchAnalyzer": None,
+      "analyzer": None,
+      "fields": []
     },
     {
       "name": "Tags",
