@@ -1,0 +1,41 @@
+{
+    "success": true,
+    "data": {
+      "reimbursementDetails": {
+        "requestId": "RQ3452AB91",
+        "employeeId": "EMP2342",
+        "requestDate": "2024-03-25",
+        "totalAmount": 450.00,
+        "status": "Approved",
+        "itemizedExpenses": [
+          {
+            "description": "Hotel accommodation",
+            "amount": 300.00,
+            "date": "2024-03-24"
+          },
+          {
+            "description": "Meal expenses",
+            "amount": 150.00,
+            "date": "2024-03-25"
+          }
+        ],
+        "comments": [
+          {
+            "commentId": "CM9823ZZ01",
+            "authorId": "EMP1002",
+            "comment": "Approved pending receipts submission.",
+            "date": "2024-03-26"
+          }
+        ],
+        "approvals": [
+          {
+            "approvalId": "AP5678FD34",
+            "approverId": "EMP1020",
+            "date": "2024-03-26"
+          }
+        ]
+      }
+    },
+    "message": "Reimbursement details retrieved successfully."
+  }
+  

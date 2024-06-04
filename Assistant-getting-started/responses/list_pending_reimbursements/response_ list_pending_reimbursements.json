@@ -1,0 +1,30 @@
+{
+    "success": true,
+    "data": {
+      "pendingReimbursements": [
+        {
+          "requestId": "RQ3452AB91",
+          "employeeId": "EMP2342",
+          "requestDate": "2024-03-25",
+          "totalAmount": 450.00,
+          "status": "Pending Approval"
+        },
+        {
+          "requestId": "RQ3452AC98",
+          "employeeId": "EMP2345",
+          "requestDate": "2024-03-26",
+          "totalAmount": 300.00,
+          "status": "Pending Processing"
+        },
+        {
+          "requestId": "RQ3452AD88",
+          "employeeId": "EMP2349",
+          "requestDate": "2024-03-27",
+          "totalAmount": 225.50,
+          "status": "Pending Approval"
+        }
+      ]
+    },
+    "message": "Pending reimbursements list retrieved successfully."
+  }
+  

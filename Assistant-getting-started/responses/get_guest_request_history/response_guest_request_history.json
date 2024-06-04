@@ -1,0 +1,45 @@
+{
+  "guestName": "John Doe",
+  "requestHistory": [
+    {
+      "requestType": "Room Service",
+      "details": {
+        "itemsOrdered": ["Caesar Salad", "Mineral Water"],
+        "date": "2024-05-01",
+        "status": "Completed"
+      }
+    },
+    {
+      "requestType": "Housekeeping",
+      "details": {
+        "service": "Extra Towels",
+        "date": "2024-05-02",
+        "status": "Completed"
+      }
+    },
+    {
+      "requestType": "Concierge",
+      "details": {
+        "recommendation": "City Tour",
+        "date": "2024-05-03",
+        "status": "In Progress"
+      }
+    },
+    {
+      "requestType": "Personalized Requirements",
+      "details": {
+        "requirement": "Room with Sea View",
+        "dateRequested": "2024-05-01",
+        "status": "Granted"
+      }
+    },
+    {
+      "requestType": "Personalized Requirements",
+      "details": {
+        "requirement": "Allergy-Friendly Bedding",
+        "dateRequested": "2024-05-01",
+        "status": "Granted"
+      }
+    }
+  ]
+}

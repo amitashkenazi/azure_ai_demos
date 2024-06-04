@@ -1,0 +1,27 @@
+{
+  "name": "list_pending_reimbursements",
+  "description": "Lists all reimbursement requests that are currently pending approval or processing, including basic details like employee ID, request date, and total amount.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "startDate": {
+        "type": "string",
+        "optional": true,
+        "description": "The start date from which to begin listing pending reimbursements, in YYYY-MM-DD format."
+      },
+      "endDate": {
+        "type": "string",
+        "optional": true,
+        "description": "The end date until which to list pending reimbursements, in YYYY-MM-DD format."
+      },
+      "userID": {
+        "type": "string",
+        "description": "The user ID of the employee whose pending reimbursements you want to list."
+      }
+      
+    },
+    "required": [
+      "userID"
+    ]
+  }
+}

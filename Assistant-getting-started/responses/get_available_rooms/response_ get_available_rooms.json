@@ -1,0 +1,71 @@
+{
+    "availableRooms": [
+      {
+        "roomNumber": "101",
+        "roomType": "Single",
+        "bedType": "Queen",
+        "amenities": ["City View", "WiFi", "Minibar"],
+        "ratePerNight": 150.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      },
+      {
+        "roomNumber": "202",
+        "roomType": "Double",
+        "bedType": "King",
+        "amenities": ["Sea View", "Balcony", "WiFi", "Minibar"],
+        "ratePerNight": 250.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      },
+      {
+        "roomNumber": "303",
+        "roomType": "Suite",
+        "bedType": "King",
+        "amenities": ["Sea View", "Balcony", "Jacuzzi", "WiFi", "Kitchenette", "Minibar"],
+        "ratePerNight": 400.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      },
+      {
+        "roomNumber": "404",
+        "roomType": "Family",
+        "bedType": "Two Queen Beds",
+        "amenities": ["Garden View", "WiFi", "Kitchenette", "Minibar"],
+        "ratePerNight": 300.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      },
+      {
+        "roomNumber": "505",
+        "roomType": "Single",
+        "bedType": "Twin",
+        "amenities": ["City View", "WiFi"],
+        "ratePerNight": 120.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      },
+      {
+        "roomNumber": "606",
+        "roomType": "Double",
+        "bedType": "Queen",
+        "amenities": ["Pool View", "Balcony", "WiFi", "Minibar"],
+        "ratePerNight": 200.0,
+        "availabilityPeriod": {
+          "startDate": "2024-06-01",
+          "endDate": "2024-06-07"
+        }
+      }
+    ]
+  }
+  

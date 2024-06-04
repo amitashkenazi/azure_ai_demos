@@ -1,0 +1,17 @@
+{
+    "name": "get_reimbursement_details",
+    "description": "Retrieves full details of a specific reimbursement request, including employee ID, request date, status, total amount, itemized expenses, and any associated comments or approvals.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "reimbursementID": {
+          "type": "string",
+          "description": "The unique identifier for the reimbursement request whose details are to be retrieved."
+        }
+      },
+      "required": [
+        "reimbursementID"
+      ]
+    }
+  }
+  

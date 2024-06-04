@@ -1,0 +1,16 @@
+{
+  "name": "get_guest_request_history",
+  "description": "Retrieves the history of all requests made by a particular guest during their stay, such as amenities, preferences, housekeeping, or concierge requests.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "guestName": {
+        "type": "string",
+        "description": "The full name of the guest for whom the request history is being retrieved."
+      }
+    },
+    "required": [
+      "guestName"
+    ]
+  }
+}
