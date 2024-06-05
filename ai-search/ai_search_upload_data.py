@@ -7,8 +7,8 @@ from uuid import uuid4
 import os
 from dotenv import load_dotenv
 import importlib
-import generate_meta_data_image
-importlib.reload(generate_meta_data_image)
+import generate_meta_data_image 
+importlib.reload(generate_meta_data_image   )
 
 from generate_meta_data_image import analyze_image
 
@@ -42,24 +42,21 @@ headers = {
     'api-key': os.environ['AI_SEARCH_KEY']
 }
 
-def analyze_docs():
-    chunks = []
-    print(check_database('faqdemo'))
-    print(check_container('faqdemo'))
+def analyze_and_upload_docs():
+    parts = []
     docs = get()
     for d in docs:
-        pprint(d)
-        embedding_q = get_embedding(
-            d["question"],
-            model="text-embedding-ada-002"
-        )
-        print("embedding_q")
+        print(f"Analyzing doc {d['id']}")
+        # embedding_q = get_embedding(
+        #     d["question"],
+        #     model="text-embedding-ada-002"
+        # )
         embedding_a = get_embedding(
             d["answer"],
             model="text-embedding-ada-002"
         )
 
-        chunk = {
+        part = {
             "id": d["id"],
             "answer": d["answer"],
             "url": d["url"],
@@ -68,10 +65,10 @@ def analyze_docs():
             "AnswerVector": embedding_a,
             "Tags": ["FAQ", "Azure"]
         }
-        chunks.append(chunk)
+        parts.append(part)
 
     batch = {
-        "value": chunks
+        "value": parts
     }
 
     # Convert the batch to a JSON string
@@ -81,28 +78,27 @@ def analyze_docs():
     print(response.status_code)
     print(response.text)
 
-def analyze_images(images_urls):
+def analyze_and_updload_images(images_urls):
     print("Analyzing images...")
-    chunks = []
+    parts = []
     for img_url in images_urls:
         print(f"Analyzing image {img_url}")
         res = analyze_image(img_url)
-        print(res)
         description = res['image_description']
         title = res['image_title']
-        embedding_a = get_embedding(description, model="text-embedding-ada-002")
-        chunk = {
+        embedding_image_description = get_embedding(description, model="text-embedding-ada-002")
+        part = {
             "id": str(uuid4()),
             "answer": description,
             "url": img_url,
             "title": title,
             "filename": img_url,
-            "AnswerVector": embedding_a,
+            "AnswerVector": embedding_image_description,
             "Tags": ["FAQ", "Azure", "Image"]
         }
-        chunks.append(chunk)
+        parts.append(part)
     batch = {
-        "value": chunks
+        "value": parts
     }
     payload = json.dumps(batch)
     print(f"sending to {endpoint}")
@@ -113,5 +109,5 @@ def analyze_images(images_urls):
 if __name__ == "__main__":
     analyze_images = ["https://new2cloud.de/wp-content/uploads/2021/04/CreateAzureFreeAccount-1-1536x879.png"]
     analyze_docs()
-    analyze_images(analyze_images)
+    analyze_and_updload_images(analyze_images)
     

@@ -15,7 +15,7 @@ def analyze_image(image_url):
         response_format={ "type": "json_object" },
         messages=[
             {"role": "system", "content": """You are an assistant helping to extract metadata from an images in order to index them in a search service.
-             response in the following json format:
+             respond in the following json format:
                 {
                     "image_description": <detailed description to be indexed>,
                     "image_title": <title of the image to be indexed>,
