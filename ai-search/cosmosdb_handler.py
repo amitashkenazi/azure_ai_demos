@@ -4,6 +4,13 @@ from dotenv import load_dotenv
 import uuid
 from pprint import pprint 
 from azure.cosmos.partition_key import PartitionKey
+from openai import AzureOpenAI
+
+client_openi = AzureOpenAI(
+    api_key=os.environ['OPENAI_API_KEY'],
+    azure_endpoint=os.environ['OPENAI_ENDPOINT'],
+    api_version="2024-02-01"
+)
 
 # Load the .env file
 load_dotenv()
@@ -70,6 +77,11 @@ def update_item(item_id, test_result):
     container.upsert_item(test_result)
     print("Document updated successfully!")
 
+def get_embedding(text, model="text-embedding-ada-002"):
+    response = client_openi.embeddings.create(input=text,
+    model=model)
+    return response.data[0].embedding
+
 if __name__ == "__main__":
     import pandas as pd
     docs = get()
@@ -83,6 +95,7 @@ if __name__ == "__main__":
         test_result = {
             "question": row["question"],
             "answer": row["answer"],
+            "AnswerVector": get_embedding(row["answer"]),
             "url": "https://faq.demo.com",
             "title": "FAQ",
             "file_name": "faqs.csv"
